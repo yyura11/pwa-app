@@ -1,14 +1,11 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
-      .then(registration => {
-        console.log('Service Worker зареєстрований з обсягом:', registration.scope);
-      })
-      .catch(err => {
-        console.log('Реєстрація Service Worker провалена:', err);
-      });
+      .then(reg => console.log('Service Worker registered:', reg))
+      .catch(err => console.log('Service Worker error:', err));
   });
 }
+
 
 
 // --- Бургер-меню ---
