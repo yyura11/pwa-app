@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CMS</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json" />
+ <meta name="theme-color" content="#4a90e2" />
+  <style>
+    .visually-hidden {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <a href="index.html" class="logo">CMS</a>
+    </div>
+    <div class="top-bar-right">
+      <div class="bell-container">
+        <img src="bell.png" id="bell" class="bell" alt="Notifications">
+        <div id="notificationDot" class="bell-notification" style="display: none;"></div>
+
+        <div class="notifications-box">
+          <div class="notification-item">
+            <div class="notif-avatar-block">
+              <img src="avatar.png" class="notif-avatar-img" alt="User Avatar">
+              <div class="notif-name">Admin</div>
+            </div>
+            <div class="notif-content">
+              <div class="notif-message">
+                When they talk shit about not being certified, but it's summer for me.
+              </div>
+            </div>
+          </div>
+
+          <div class="notification-item">
+            <div class="notif-avatar-block">
+              <img src="avatar.png" class="notif-avatar-img" alt="User Avatar">
+              <div class="notif-name">John K.</div>
+            </div>
+            <div class="notif-content">
+              <div class="notif-message">
+                I fucked this fucking PZ really hard in the mouth.
+              </div>
+            </div>
+          </div>
+
+          <div class="notification-item">
+            <div class="notif-avatar-block">
+              <img src="avatar.png" class="notif-avatar-img" alt="User Avatar">
+              <div class="notif-name">Ann S.</div>
+            </div>
+            <div class="notif-content">
+              <div class="notif-message">
+                AAAAAAAAA.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="user-info" id="userInfo">
+        <img src="avatar.png" alt="Avatar" class="avatar">
+        <span class="user-name">James Bond</span>
+        <div class="user-dropdown" id="userDropdown">
+          <button>Profile</button>
+          <button>Log out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="burger-menu" id="burgerIcon" aria-label="Menu">☰</div>
+  <div id="burgerDropdown" class="burger-dropdown">
+    <a href="dashboard.html"><button>Dashboard</button></a>
+    <a href="index.html"><button>Students</button></a>
+    <a href="task.html"><button>Tasks</button></a>
+  </div>
+
+  <div class="content">
+    <aside class="sidebar">
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="index.html">Students</a></li>
+          <li><a href="task.html">Tasks</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="students-section">
+        <h1>Students</h1>
+        <button id="openAddModal" class="add-button" aria-label="Add student">+ Add Student</button>
+
+        <table class="students-table">
+          <thead>
+            <tr>
+              <th>
+                <label for="selectAllCheckbox" class="visually-hidden">Select All</label>
+                <input type="checkbox" id="selectAllCheckbox">
+              </th>
+              <th>Group</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Birthday</th>
+              <th>Status</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody id="studentsList">
+            <tr>
+              <td>
+                <label for="row1" class="visually-hidden">Select student John Smith</label>
+                <input type="checkbox" class="rowCheckbox" id="row1">
+              </td>
+              <td>KN-21</td>
+              <td>John Smith</td>
+              <td>M</td>
+              <td>11.05.2004</td>
+              <td><span class="status active" aria-label="Active"></span></td>
+              <td>
+                <img src="icons8-edit.gif" class="editBtn icon-button" alt="Edit Student">
+                <img src="icons8-delete.gif" class="deleteBtn icon-button" alt="Delete Student">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="row2" class="visually-hidden">Select student Ann Bond</label>
+                <input type="checkbox" class="rowCheckbox" id="row2">
+              </td>
+              <td>KN-22</td>
+              <td>Ann Bond</td>
+              <td>F</td>
+              <td>24.04.2004</td>
+              <td><span class="status inactive" aria-label="Inactive"></span></td>
+              <td>
+                <img src="icons8-edit.gif" class="editBtn icon-button" alt="Edit Student">
+                <img src="icons8-delete.gif" class="deleteBtn icon-button" alt="Delete Student">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pagination" aria-label="Pagination">
+          <button aria-label="Previous page">&lt;</button>
+          <button aria-label="Page 1">1</button>
+          <button aria-label="Page 2">2</button>
+          <button aria-label="Page 3">3</button>
+          <button aria-label="Page 4">4</button>
+          <button aria-label="Next page">&gt;</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+</div>
+
+<!-- Add Student Modal -->
+<div id="addStudentModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="addStudentTitle">
+  <div class="modal-content">
+    <span id="closeAddModal" class="close" role="button" aria-label="Close add student form">&times;</span>
+    <h2 id="addStudentTitle">Add Student</h2>
+    <form id="addStudentForm" novalidate>
+  <div class="form-group">
+    <label for="group">Group:</label>
+    <select id="group" name="group" required>
+      <option value="" disabled selected hidden>Select group</option>
+      <option value="KN-21">KN-21</option>
+      <option value="KN-22">KN-22</option>
+    </select>
+    <div class="error-message" id="groupError"></div>
+  </div>
+
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+    <div class="error-message" id="firstNameError"></div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required>
+    <div class="error-message" id="lastNameError"></div>
+  </div>
+
+  <div class="form-group">
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="" disabled selected hidden>Select gender</option>
+      <option value="M">Male</option>
+      <option value="F">Female</option>
+    </select>
+    <div class="error-message" id="genderError"></div>
+  </div>
+
+  <div class="form-group">
+    <label for="birthday">Birthday:</label>
+    <input type="date" id="birthday" name="birthday" required>
+    <div class="error-message" id="birthdayError"></div>
+  </div>
+
+  <button type="submit">Create</button>
+</form>
+
+  </div>
+</div>
+
+<!-- Edit Student Modal -->
+<!-- Edit Student Modal -->
+<div id="editStudentModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="editStudentTitle">
+  <div class="modal-content">
+    <span id="closeEditModal" class="close" role="button" aria-label="Close edit form">&times;</span>
+    <h2 id="editStudentTitle">Edit Student</h2>
+    <form id="editStudentForm" novalidate>
+      
+      <div class="form-group">
+        <label for="editGroup">Group:</label>
+        <select id="editGroup" name="group" required>
+          <option value="KN-21">KN-21</option>
+          <option value="KN-22">KN-22</option>
+        </select>
+        <div class="error-message" id="editGroupError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="editFirstName">First Name:</label>
+        <input type="text" id="editFirstName" name="firstName" required>
+        <div class="error-message" id="editFirstNameError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="editLastName">Last Name:</label>
+        <input type="text" id="editLastName" name="lastName" required>
+        <div class="error-message" id="editLastNameError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="editGender">Gender:</label>
+        <select id="editGender" name="gender" required>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
+        <div class="error-message" id="editGenderError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="editBirthday">Birthday:</label>
+        <input type="date" id="editBirthday" name="birthday" required>
+        <div class="error-message" id="editBirthdayError"></div>
+      </div>
+
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
+
+
+<!-- Delete Student Modal -->
+<div id="deleteStudentModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="deleteStudentTitle">
+  <div class="modal-content">
+    <span id="closeDeleteModal" class="close" role="button" aria-label="Cancel deletion">&times;</span>
+    <h2 id="deleteStudentTitle">Warning</h2>
+    <p>Are you sure you want to delete "<strong id="studentNameToDelete"></strong>"?</p>
+    <button id="cancelDelete">Cancel</button>
+    <button id="confirmDelete">OK</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

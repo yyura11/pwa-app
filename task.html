@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CMS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Топ-бар -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <a href="index.html" class="logo">CMS</a> <!-- Лінк на сторінку CMS -->
+    </div>
+    <div class="top-bar-right">
+      <div class="bell-wrapper">
+        <img id="bell" src="bell.png" alt="Notifications" class="bell" title="Notifications">
+        <div class="bell-notification" id="notificationDot"></div> <!-- Додаємо id -->
+      </div>
+    
+      <div class="user-info">
+        <img src="avatar.png" alt="User Avatar" class="avatar">
+        <span>James Bond</span>
+      </div>
+    </div>    
+  </header>
+
+  <!-- Бургер-меню без окремого фону -->
+  <div class="burger-menu" id="burgerIcon">☰</div>
+  <div id="burgerDropdown" class="burger-dropdown">
+    <button id="dashboardBtn">Dashboard</button>
+    <button id="studentsBtn">Students</button>
+    <button id="tasksBtn">Tasks</button>
+  </div>
+
+  <div class="content">
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li> <!-- Ось тут вказуємо посилання -->
+          <li><a href="index.html">Students</a></li>
+          <li><a href="task.html">Tasks</a></li>
+        </ul>
+      </nav>
+    </aside>
+    
+    <h1>Tasks</h1>
+    
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

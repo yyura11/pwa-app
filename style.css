@@ -1,0 +1,459 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Для скасування підкреслення на лінку CMS */
+a.logo {
+  text-decoration: none;  /* Знімає підкреслення */
+  color: white;  /* Задає колір тексту */
+}
+
+ /*Для того, щоб зробити лінк "Students" жирним шрифтом */
+.sidebar a[href="index.html"] {
+  font-weight: bold;  /* Задає жирний шрифт */
+}
+/* на всі сайти хєрачить*/
+
+.top-bar {
+  height: 60px;
+  background-color: #2c3e50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+  position: relative;
+  z-index: 10;
+}
+
+.top-bar-left .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.bell-wrapper {
+  position: relative;
+}
+
+.bell {
+  width: 30px;
+  height: 30px;
+ /* margin-right: 10px;*/
+  cursor: pointer;
+}
+
+.bell-notification {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  background-color: orange;
+  border-radius: 50%;
+  display: none; /* Сховано за замовчуванням */
+}
+
+
+@keyframes bell-shake {
+  0% { transform: rotate(0); }
+  20% { transform: rotate(-10deg); }
+  40% { transform: rotate(10deg); }
+  60% { transform: rotate(-10deg); }
+  80% { transform: rotate(10deg); }
+  100% { transform: rotate(0); }
+}
+
+.bell.animate {
+  animation: bell-shake 0.6s ease;
+}
+
+
+.user-info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: none;
+  flex-direction: column;
+  padding: 10px;
+  z-index: 1001;
+  border-radius: 6px;
+  min-width: 120px;
+}
+
+.user-dropdown button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.user-dropdown button:hover {
+  background-color: #f0f0f0;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
+  margin-left: 10px;
+  border: 2px solid white; /* Біле кільце */
+  cursor: pointer;
+}
+
+/* Бургер меню */
+.burger-menu {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  margin: 10px 20px;
+}
+
+#burgerIcon {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.burger-dropdown {
+  display: none;
+  flex-direction: column;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 150px;
+  margin: 10px 20px;
+  position: absolute;
+  top: 60px; /* прямо під топ-баром */
+  left: 10px;
+  z-index: 9;
+}
+
+.burger-dropdown button {
+  background: none;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.burger-dropdown button:hover {
+  background-color: #f0f0f0;
+}
+
+.content {
+  display: flex;
+  flex-grow: 1;
+}
+/* Стилі для посилань в меню */
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block; /* Для кращого натискання */
+  padding: 8px 16px;
+  transition: color 0.3s ease, background-color 0.3s ease; /* Плавні зміни */
+}
+
+/* Стиль при наведенні */
+.sidebar a:hover {
+  color: #3498db; /* Змінюється колір тексту */
+  background-color: rgba(255, 255, 255, 0.1); /* Легке затемнення фону */
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #34495e;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 15px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.students-section {
+  margin-top: 20px;
+}
+
+.add-button {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  background-color: #2165a5; /* темніший синій */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.students-table th, .students-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.status {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.status.active {
+  background-color: green;
+}
+
+.status.inactive {
+  background-color: lightgray;
+}
+
+.pagination {
+  margin-top: 15px;
+}
+
+.pagination button {
+  margin: 0 2px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Стилі для іконок редагування та видалення */
+.icon-button {
+  width: 24px;
+  height: 24px;
+  object-fit: contain; /* Забезпечує, щоб зображення не деформувалося */
+}
+
+/* Стиль при наведенні */
+.icon-button:hover {
+  transform: scale(1.3); /* Збільшуємо розмір на 20% */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Додаємо тінь для кращого ефекту */
+}
+
+
+/* Окремо для іконок Edit і Delete, якщо потрібно */
+.editBtn:hover,
+.deleteBtn:hover {
+  cursor: pointer; /* Курсор стане рукою при наведенні */
+}
+
+/* Модальні вікна */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  width: 400px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  transition: color 0.3s ease; /* для плавної зміни кольору */
+}
+
+.close:hover {
+  color: red;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90vw;           /* Ширина майже на весь екран */
+    margin: 20% auto;      /* Більший верхній відступ для мобілки */
+    padding: 15px;         /* Менше падінгу */
+    border-radius: 6px;    /* Трохи менші кути */
+  }
+
+  .close {
+    font-size: 24px;       /* Менше, щоб не роз'їжджалося */
+    top: 8px;
+    right: 15px;
+  }
+}
+
+/* Адаптивність */
+@media (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .user-name {
+    display: none;
+  }
+}
+
+
+.bell-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.notifications-box {
+  display: none;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  width: 300px;
+  background-color: #34495e;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.bell-container:hover .notifications-box {
+  display: block;
+}
+
+.notification-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: flex-start;
+}
+
+.notification-item:last-child {
+  margin-bottom: 0;
+}
+
+.notif-avatar-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50px;
+}
+
+.notif-avatar-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+}
+
+.notif-name {
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.notif-content {
+  flex: 1;
+}
+
+.notif-message {
+  background: #ffffff;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #000000;
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .notifications-box {
+    position: fixed;
+    top: 60px; /* або інше, під navbar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+}
+
+
+.input-error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.85em;
+  margin-top: 4px;
+}
+select:invalid {
+  color: gray;
+}
+
+select option {
+  color: black;
+}
